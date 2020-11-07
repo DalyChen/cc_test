@@ -53,7 +53,7 @@ mkdir -p ./build/
 
 cd ./build/
 
-cmake ..
+cmake .. -DCMAKE_INSTALL_PREFIX=/opt/raccoon
 
 make
 
@@ -61,8 +61,6 @@ if ! [[ $? = 0 ]] ; then
     echo "build error or warn!"
     exit -1
 fi
-
-mv ./*.out ../
 
 cd ..
 

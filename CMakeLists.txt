@@ -3,9 +3,6 @@ project(HelloWorld)
 
 set(CMAKE_CXX_STANDARD 11)
 
-include_directories(function)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
-aux_source_directory(. SRC_LIST)
-aux_source_directory(function SRC_LIST)
-
-add_executable(HelloWorld.out ${SRC_LIST})
+# EXECUTABLE_OUTPUT_PATH
