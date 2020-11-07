@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "opt: $@"
+# --- 检查输入 ----
 
 is_install=0
 is_force=0
@@ -29,8 +29,17 @@ do
     fi
 done
 
+if [[ ${is_clean} = 1 ]]; then
+    rm -rf ./build/
+    rm -rf *.out
+    echo "---make clean done!---"
+    exit -1
+fi
+
+# --- 检查 git 路径 ---
 if [[ ${is_force} != 1 ]]; then
     git_status=$(git status  --porcelain)
+    # echo ${git_status}
     if [[ -z ${git_status} ]]; then
         echo "git is clean!"
     else
@@ -39,12 +48,22 @@ if [[ ${is_force} != 1 ]]; then
     fi
 fi
 
+# --- 编译 ---
 mkdir -p ./build/
 
 cd ./build/
 
 cmake ..
+
 make
+
+if ! [[ $? = 0 ]] ; then
+    echo "build error or warn!"
+    exit -1
+fi
+
+mv ./*.out ../
 
 cd ..
 
+# end of file

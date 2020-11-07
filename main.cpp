@@ -1,7 +1,9 @@
 //main.cpp
 #include <iostream>
 
+#include "display.h"
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    show();
     return 0;
 }
