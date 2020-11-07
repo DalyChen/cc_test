@@ -3,7 +3,9 @@ project(HelloWorld)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# set(SRC_LIST main.cpp display.cpp)
+include_directories(function)
+
 aux_source_directory(. SRC_LIST)
+aux_source_directory(function SRC_LIST)
 
 add_executable(HelloWorld.out ${SRC_LIST})
