@@ -1,0 +1,19 @@
+# 第一个目标是最终目标及make的默认目标
+# 只要我们不期待生成目标文件，就应该把它定义成伪目标
+
+.PHONY:targeta
+target_a: target_b target_c
+	ls -lh
+
+.PHONY:targetb
+target_b:
+	touch test.txt
+	ls
+
+.PHONY:targetc
+target_c:
+	pwd
+
+.PHONY:targetd
+target_d:
+	rm -f test.txt

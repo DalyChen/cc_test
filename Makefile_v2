@@ -1,0 +1,52 @@
+#定义变量
+TARGET=hello_main
+
+BUILD_DIR=build_$(ARCH)
+${info BUILD_DIR: $(BUILD_DIR)}
+
+#存放源文件的文件夹
+SRC_DIR=src
+#存放头文件的文件夹
+INC_DIR = inc .
+
+CFLAGS=-I./
+DEPS=hello_func.h
+OBJS=hello_main.o hello_func.o
+
+
+FILELIST=${wildcard ./src/*.c}
+${info files list: $(FILELIST)}
+
+FILENAME=${notdir $(FILELIST)}
+${info file names: $(FILENAME)}
+
+OBJSLIST=${patsubst %.c, build_dir/%.o, $(FILENAME)}
+${info objs list: $(OBJSLIST)}
+
+OBJSLIST2=${patsubst %.c, %.o, $(FILELIST)}
+${info objs list: $(OBJSLIST2)}
+
+
+ARCH?=x86
+$(info ARCH=$(ARCH))
+
+ifeq ($(ARCH), x86)
+CC=gcc
+else
+$(error ARCH--$(ARCH) isn't support)
+endif
+
+
+
+#目标文件
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+#*.o文件的生成规则
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+#伪目标
+.PHONY: clean
+clean:
+	rm -f *.o $(TARGET)

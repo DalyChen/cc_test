@@ -1,0 +1,15 @@
+#Makefile格式
+#hello_main依赖于hello_main.c和hello_func.c文件
+hello_main: hello_main.o hello_func.o
+	gcc -o hello_main hello_main.o hello_func.o
+
+hello_main.o:
+	gcc -c hello_main.c -I ./hello_func
+
+hello_func.o:
+	gcc -c ./hello_func/hello_func.c
+
+#clean目标，用来删除编译生成的文件
+.PHONY:clean
+clean:
+	rm -f *.o hello_main
