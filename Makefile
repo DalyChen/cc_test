@@ -1,42 +1,48 @@
-#定义变量
+# 目标名称
 TARGET=hello_main
 
+# 架构检查
 ARCH?=x86
 $(info ARCH=$(ARCH))
-
 ifeq ($(ARCH), x86)
 CC=gcc
 else
 $(error ARCH--$(ARCH) isn't support)
 endif
 
+# 过程文件目录
 BUILD_DIR=build_$(ARCH)
 ${info BUILD_DIR: $(BUILD_DIR)}
 
-#存放源文件的文件夹
+# 获得源文件及中间文件
 SRC_DIR=src
-#存放头文件的文件夹
+TEST_SRC_DIR=src/test
+
+SRCS=${wildcard $(SRC_DIR)/*.c $(TEST_SRC_DIR)/*.c}
+${info SRCS: $(SRCS)}
+
+OBJECT=${patsubst %.c, %.o, $(SRCS)}
+${info OBJECT: $(OBJECT)}
+
+
 INC_DIR =inc
-
-SRCS=${wildcard $(SRC_DIR)/*.c}
-${info files list: $(SRCS)}
-
-OBJSLIST=${patsubst %.c, $(BUILD_DIR)/%.o, ${notdir $(SRCS)}}
-${info objs list: $(OBJSLIST)}
-
 DEPS=${wildcard $(INC_DIR)/*.h}
 ${info deps list: $(DEPS)}
 
 CFLAGS = $(patsubst %, -I%, $(INC_DIR))
 ${info cflags list: $(CFLAGS)}
+######################################################
 
 
-$(BUILD_DIR)/$(TARGET): $(OBJSLIST)
-	@mkdir -p $(BUILD_DIR)
+all: CHECKDIR $(BUILD_DIR)/$(TARGET)
+
+CHECKDIR:
+	mkdir -p $(BUILD_DIR)
+
+$(BUILD_DIR)/$(TARGET): $(OBJECT)
 	$(CC) -o $@ $^ $(CFLAGS)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
-	@mkdir -p $(BUILD_DIR)
+$(OBJECT):%.o:%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 #伪目标
@@ -44,7 +50,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 
 #按架构删除
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf $(OBJECT) $(BUILD_DIR)/$(TARGET)
 #全部删除
 cleanall:
 	rm -rf build_x86 build_arm
