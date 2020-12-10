@@ -16,12 +16,12 @@
 #include "ny_cheese_pizza.h"
 #include "ccg_cheese_pizza.h"
 
+
 namespace pattern_test {
 
 PizzaStore::PizzaStore() {
     ;
 }
-
 
 Pizza::Ptr PizzaStore::InitPizza(std::string PizzaName) {
     Pizza::Ptr NewPizza = CreatePizza(PizzaName);
@@ -36,7 +36,6 @@ Pizza::Ptr PizzaStore::InitPizza(std::string PizzaName) {
     return NewPizza;
 }
 
-
 Pizza::Ptr PizzaStore:: CreatePizza(std::string PizzaName) {
     std::cout << "get a name: " << PizzaName << std::endl;
     if (PizzaName == "NyCheesePizza") {
@@ -47,8 +46,6 @@ Pizza::Ptr PizzaStore:: CreatePizza(std::string PizzaName) {
         return nullptr;
     }
 }
-
-
 
 } /* namespace pattern_test */
 
