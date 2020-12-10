@@ -22,8 +22,24 @@ PizzaStore::PizzaStore() {
     ;
 }
 
-Pizza::Ptr PizzaStore::createBoardCard(std::string PizzaName) {
-    if (PizzaName == "NyCheese") {
+
+Pizza::Ptr PizzaStore::InitPizza(std::string PizzaName) {
+    Pizza::Ptr NewPizza = CreatePizza(PizzaName);
+
+    if (NewPizza != nullptr) {
+        std::string TempPizzaName;
+        std::cout << "We get a ";
+        TempPizzaName = NewPizza->GetPizzaName();
+        std::cout << TempPizzaName << std::endl << std::endl;
+    }
+
+    return NewPizza;
+}
+
+
+Pizza::Ptr PizzaStore:: CreatePizza(std::string PizzaName) {
+    std::cout << "get a name: " << PizzaName << std::endl;
+    if (PizzaName == "NyCheesePizza") {
         return boost::make_shared<NyCheesePizza>();
     } else if (PizzaName == "CcgCheesePizza") {
         return boost::make_shared<CcgCheesePizza>();

@@ -23,9 +23,10 @@ public:
     PizzaStore();
     virtual ~PizzaStore(){};
 
-    Pizza::Ptr createBoardCard(std::string PizzaName);
+    Pizza::Ptr InitPizza(std::string PizzaName);
 
 private:
+    Pizza::Ptr CreatePizza(std::string PizzaName);
 
 };
 
