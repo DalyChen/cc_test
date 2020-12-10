@@ -4,21 +4,16 @@ project(HelloWorld)
 add_compile_options(-std=c++11)
 find_package(Boost REQUIRED COMPONENTS system)
 
-
-# set(CMAKE_CXX_STANDARD 11)
-# find_package(Boost REQUIRED COMPONENTS system)
-# message("test")
-# if(NOT Boost_FOUND)
-#     message("Not found Boost")
-# endif()
-
 include_directories(${Boost_INCLUDE_DIRS})
 message("${Boost_INCLUDE_DIRS}")
 message("${Boost_LIBRARIES}")
 
 include_directories(./include)
+include_directories(./include/pizza)
+
 aux_source_directory(. SRC_LIST)
 aux_source_directory(src SRC_LIST)
+aux_source_directory(src/pizza SRC_LIST)
 
-add_executable(HelloWorld ${SRC_LIST})
-target_link_libraries(HelloWorld ${Boost_LIBRARIES})
+add_executable(${PROJECT_NAME} ${SRC_LIST})
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
