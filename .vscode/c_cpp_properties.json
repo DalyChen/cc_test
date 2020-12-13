@@ -1,11 +1,14 @@
 {
     "env":{
+        "Command": "${workspaceFolder}/command/include",
         "FactoryMethod": "${workspaceFolder}/factory_method"
     },
     "configurations": [
         {
             "name": "Linux",
             "includePath": [
+                "${Command}/command",
+                "${Command}/devices",
                 "${FactoryMethod}/include/",
                 "${FactoryMethod}/include/pizza/",
                 "${workspaceFolder}/"
@@ -13,6 +16,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
+                    "${Command}/command",
+                    "${Command}/devices",
                     "${FactoryMethod}/include/",
                     "${FactoryMethod}/include/pizza/",
                     "${workspaceFolder}/"
