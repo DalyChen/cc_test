@@ -20,12 +20,14 @@ namespace pattern_test {
 
 class PizzaStore {
 public:
-    PizzaStore();
+    static PizzaStore* GetInstance();
     virtual ~PizzaStore(){};
 
     Pizza::Ptr InitPizza(std::string PizzaName);
 
 private:
+    // static PizzaStore* Instance_;
+    PizzaStore();
     Pizza::Ptr CreatePizza(std::string PizzaName);
 
 };
