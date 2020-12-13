@@ -26,7 +26,6 @@ public:
     Pizza::Ptr InitPizza(std::string PizzaName);
 
 private:
-    // static PizzaStore* Instance_;
     PizzaStore();
     Pizza::Ptr CreatePizza(std::string PizzaName);
 

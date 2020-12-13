@@ -19,8 +19,6 @@
 
 namespace pattern_test {
 
-// PizzaStore* PizzaStore::Instance_ = nullptr;
-
 PizzaStore* PizzaStore::GetInstance() {
     static PizzaStore Instance;
     return &Instance;
