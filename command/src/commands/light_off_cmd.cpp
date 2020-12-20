@@ -25,7 +25,7 @@ void LightOffCommand::Execute() {
 }
 
 void LightOffCommand::Undo() {
-    ;
+    LightPtr_->on();
 }
 
 } /* namespace pattern_test */

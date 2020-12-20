@@ -32,11 +32,12 @@ public:
     void SetCmd(int slot, Command::Ptr OnCmd, Command::Ptr OffCmd);
     void PushOnButton(int slot);
     void PushOffButton(int slot);
+    void PushUndoButton();
 
 private:
     std::map<int, Command::Ptr> OnCmds;
     std::map<int, Command::Ptr> OffCmds;
-
+    Command::Ptr UndoCmd;
 };
 
 } /* namespace pattern_test */

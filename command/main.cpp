@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
     pattern_test::Light::Ptr OutdoorLight = 
         boost::make_shared<pattern_test::Light>("Outdoor");
 
+    // creat cmds
     pattern_test::LightOnCommand::Ptr LivingRoomLightOn = 
         boost::make_shared<pattern_test::LightOnCommand>(LivingRoomLight);
     pattern_test::LightOffCommand::Ptr LivingRoomLightOff = 
@@ -33,13 +34,20 @@ int main(int argc, char** argv) {
     pattern_test::LightOffCommand::Ptr OutdoorLightOff =
         boost::make_shared<pattern_test::LightOffCommand>(OutdoorLight);
 
+    // bind cmds
     SimpleRemote->SetCmd(LIVING_ROOM_LIGHT, LivingRoomLightOn, LivingRoomLightOff);
     SimpleRemote->SetCmd(OUTDOOR_LIGHT, OutdoorLightOn, OutdoorLightOff);
 
+    // use it
+    SimpleRemote->PushUndoButton();
     SimpleRemote->PushOffButton(LIVING_ROOM_LIGHT);
+    SimpleRemote->PushUndoButton();
     SimpleRemote->PushOnButton(LIVING_ROOM_LIGHT);
+    SimpleRemote->PushUndoButton();
     SimpleRemote->PushOnButton(OUTDOOR_LIGHT);
+    SimpleRemote->PushUndoButton();
     SimpleRemote->PushOffButton(OUTDOOR_LIGHT);
+    SimpleRemote->PushUndoButton();
 
     return 0;
 }
