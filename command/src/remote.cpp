@@ -24,11 +24,15 @@ void  Remote::SetCmd(int slot, Command::Ptr OnCmd, Command::Ptr OffCmd) {
 }
 
 void Remote::PushOnButton(int slot) {
-    ;
+    if (OnCmds.find(slot) != OnCmds.end()) {
+        OnCmds[slot]->Execute();
+    }
 }
 
 void Remote::PushOffButton(int slot) {
-    ;
+    if (OffCmds.find(slot) != OffCmds.end()) {
+        OffCmds[slot]->Execute();
+    }
 }
 
 } /* namespace pattern_test */
