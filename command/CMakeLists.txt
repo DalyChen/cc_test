@@ -10,10 +10,12 @@ message("${Boost_LIBRARIES}")
 
 include_directories(./include)
 include_directories(./include/devices)
+include_directories(./include/commands)
 
 aux_source_directory(. SRC_LIST)
 aux_source_directory(src SRC_LIST)
 aux_source_directory(src/devices SRC_LIST)
+aux_source_directory(src/commands SRC_LIST)
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})

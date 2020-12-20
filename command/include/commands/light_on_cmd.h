@@ -13,18 +13,21 @@
 
 
 #include "command.h"
+#include "light.h"
 
 namespace pattern_test {
 
-class LightONCommand : public Command {
+class LightOnCommand : public Command {
 public:
-    LightONCommand();
-    virtual ~LightONCommand() {};
+    typedef boost::shared_ptr<LightOnCommand> Ptr;
+
+    LightOnCommand(Light::Ptr LightPtr);
+    virtual ~LightOnCommand() {};
     virtual void Execute() override;
     virtual void Undo() override;
 
 private:
-
+    Light::Ptr LightPtr_;
 };
 
 } /* namespace pattern_test */

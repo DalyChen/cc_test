@@ -7,7 +7,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${Command}/command",
+                "${Command}/",
+                "${Command}/commands",
                 "${Command}/devices",
                 "${FactoryMethod}/include/",
                 "${FactoryMethod}/include/pizza/",
@@ -16,7 +17,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "${Command}/command",
+                    "${Command}/",
+                    "${Command}/commands",
                     "${Command}/devices",
                     "${FactoryMethod}/include/",
                     "${FactoryMethod}/include/pizza/",

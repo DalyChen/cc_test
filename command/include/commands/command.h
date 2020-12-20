@@ -21,7 +21,7 @@ class Command{
 public:
     typedef boost::shared_ptr<Command> Ptr;
 
-    Command();
+    Command() {};
     virtual ~Command() {};
     virtual void Execute() = 0;
     virtual void Undo() = 0;
