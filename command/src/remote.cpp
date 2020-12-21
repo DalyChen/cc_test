@@ -8,7 +8,7 @@
 * remarks: 
 ******************************************************************************/
 
-
+#include <iostream>
 #include <boost/make_shared.hpp>
 #include "remote.h"
 #include "no_cmd.h"
@@ -42,6 +42,7 @@ void Remote::PushOffButton(int slot) {
 }
 
 void Remote::PushUndoButton() {
+    std::cout << "Undo: ";
     UndoCmd->Undo();
 }
 

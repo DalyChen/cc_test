@@ -31,17 +31,17 @@ void CeilFan::off() {
 }
 
 void CeilFan::low() {
-    std::cout << "trun low" << Location_ << " ceil fan" << std::endl;
+    std::cout << "trun low " << Location_ << " ceil fan" << std::endl;
     FanState_ = LOW;
 }
 
 void CeilFan::medium() {
-    std::cout << "trun medium" << Location_ << " ceil fan" << std::endl;
+    std::cout << "trun medium " << Location_ << " ceil fan" << std::endl;
     FanState_ = MEDIUM;
 }
 
 void CeilFan::high() {
-    std::cout << "trun high" << Location_ << " ceil fan" << std::endl;
+    std::cout << "trun high " << Location_ << " ceil fan" << std::endl;
     FanState_ = HIGH;
 }
 

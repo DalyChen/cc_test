@@ -19,6 +19,10 @@ namespace pattern_test {
 class Light{
 public:
     typedef boost::shared_ptr<Light> Ptr;
+    enum LightState_e {
+        OFF = 0,
+        ON = 1
+    };
 
     Light(std::string Location);
     virtual ~Light() {};
@@ -27,7 +31,7 @@ public:
 
 private:
     std::string Location_;
-
+    LightState_e LightState_;
 };
 
 } /* namespace pattern_test */
